@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import userRouter from './routes/users.js';
-// import ordersRouter from './routes/orders.js';
+import ordersRouter from './routes/orders.js';
 dotenv.config();
 
 const app = express();
@@ -26,7 +26,7 @@ async function connect() {
 }
 connect();
 app.use('/auth', userRouter);
-// app.use('/orders', ordersRouter);
+app.use('/orders', ordersRouter);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

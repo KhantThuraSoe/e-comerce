@@ -4,15 +4,15 @@ const userSchema = new mongoose.Schema(
 		userId: { type: String },
 		userName: {
 			type: String,
-			require: [true, 'Name field can not be empty!'],
+			require: true,
 		},
 		email: {
 			type: String,
-			require: [true, 'Email field can not be empty!'],
+			require: true,
 		},
 		password: {
 			type: String,
-			require: [true, 'Password field can not be empty!'],
+			require: true,
 		},
 	},
 	{
