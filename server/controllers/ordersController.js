@@ -1,16 +1,27 @@
 import { Orders } from '../models/ordersModel.js';
-const postOrder = async (req, res) => {
-	const { orderId, userInfo, itemList, totalPrice } = req.body;
+const getOrder = async (req, res) => {
+	const { userId } = req.params;
 	try {
-		await Orders.create({
+		const order = await Orders.find({ userId: userId });
+		res.status(200).json(order);
+	} catch (error) {
+		res.status(400).json({ message: error.message });
+	}
+};
+const postOrder = async (req, res) => {
+	const { orderId, userId, itemList, totalPrice } = req.body;
+	try {
+		const newOrder = await Orders.create({
 			orderId,
-			userInfo,
+			userId,
 			itemList,
 			totalPrice,
 		});
-		res.status(200).json({ message: 'Order is successful!' });
+		if (newOrder) {
+			res.status(201).json({ message: 'Order success!' });
+		} else res.status(500).json({ message: 'Something went wrong!' });
 	} catch (error) {
-		res.status(404).json({ error: error.message });
+		res.status(400).json({ message: error.message });
 	}
 };
 // const getOrder = async (req, res) => {
@@ -33,4 +44,4 @@ const postOrder = async (req, res) => {
 // const deleteOrder = async (req, res) => {
 // 	res.send('Order deleted!');
 // };
-export { postOrder };
+export { getOrder, postOrder };

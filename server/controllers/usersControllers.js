@@ -31,7 +31,7 @@ const loginUser = async (req, res) => {
 			res.status(400).json({ message: 'Invalid password!' });
 		}
 	} else {
-		res.status(404).json({ message: 'User does not exist!' });
+		res.status(400).json({ message: 'User does not exist!' });
 	}
 };
 
