@@ -22,11 +22,13 @@ const loginUser = async (req, res) => {
 	const { userName, password } = req.body;
 	const user = await User.findOne({ userName: userName });
 	if (user) {
-		const isValid = await bcrypt.compare(password, user.password);
+		const isValid = bcrypt.compare(password, user.password);
 		if (isValid) {
-			res
-				.status(200)
-				.json({ userId: user.userId, email: user.email, userName });
+			res.status(200).json({
+				userId: user.userId,
+				email: user.email,
+				userName: user.userName,
+			});
 		} else {
 			res.status(400).json({ message: 'Invalid password!' });
 		}

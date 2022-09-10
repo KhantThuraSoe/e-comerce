@@ -1,4 +1,12 @@
 import { Orders } from '../models/ordersModel.js';
+const getOrders = async (req, res) => {
+	try {
+		const orders = await Orders.find();
+		res.send(orders);
+	} catch (error) {
+		console.log(error.message);
+	}
+};
 const getOrder = async (req, res) => {
 	const { userId } = req.params;
 	try {
@@ -44,4 +52,4 @@ const postOrder = async (req, res) => {
 // const deleteOrder = async (req, res) => {
 // 	res.send('Order deleted!');
 // };
-export { getOrder, postOrder };
+export { getOrders, getOrder, postOrder };

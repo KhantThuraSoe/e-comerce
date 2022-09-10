@@ -15,7 +15,7 @@ const PASSWORD = process.env.PASSWORD;
 async function connect() {
 	await mongoose
 		.connect(
-			`mongodb+srv://${USER_NAME}:${PASSWORD}@ecomerce.o04ahcm.mongodb.net/ecomerce?retryWrites=true&w=majority`,
+			`mongodb+srv://K_T_R_S:ktrs053272@ecomerce.nhmw813.mongodb.net/Ecomerce?retryWrites=true&w=majority`,
 			{
 				useUnifiedTopology: true,
 				useNewUrlParser: true,
