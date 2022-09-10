@@ -12,10 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 const USER_NAME = process.env.USER_NAME;
 const PASSWORD = process.env.PASSWORD;
+const DB_NAME = process.env.DB_NAME;
 async function connect() {
 	await mongoose
 		.connect(
-			`mongodb+srv://K_T_R_S:ktrs053272@ecomerce.nhmw813.mongodb.net/Ecomerce?retryWrites=true&w=majority`,
+			`mongodb+srv://${USER_NAME}:${PASSWORD}@ecomerce.nhmw813.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
 			{
 				useUnifiedTopology: true,
 				useNewUrlParser: true,
